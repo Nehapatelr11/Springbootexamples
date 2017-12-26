@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">   <meta charset="utf-8"/>
+    <title>Add new Organisation</title>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+ <div>
+    <br/>
+    <br/>
+ </div>
+ <div class="page-header">
+        <h1>Welcome to the Organisation management Page</h1>
+    </div>
+	<a href="/organisation/new" class="btn btn-primary a-btn-slide-text">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        <span><strong>Add Organisation</strong></span>            
+    </a>
+    <br/>
+	<table class="table table-striped table-bordered">
+        <tr>
+        	<td>ID</td>
+            <td>Name</td>
+            <td>Type</td>
+            <td>Created date</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            
+        </tr>
+        <tr th:each="organisation: ${organisations}">
+        	<td th:text="${organisation.organisationId}">User Id</td>
+            <td th:text="${organisation.name}">Name</td>
+            <td th:text="${organisation.type}">Type</td>
+            <td th:text="${organisation.createdDate}">Created date</td>
+            <td><a th:href="@{/users?organisationId={id}(id=${organisation.organisationId})}">View users</a></td>
+            <td align="center">
+			    <a class="btn btn-primary a-btn-slide-text" th:href="@{/organisation/edit/{id}(id=${organisation.organisationId})}"><span class="glyphicon glyphicon-edit"></span>Edit</a>
+			</td>
+			<td>   
+			    <a class="btn btn-primary a-btn-slide-text" th:href="@{/organisation/delete/{id}(id=${organisation.organisationId})}"><span class="glyphicon glyphicon-remove"></span>Delete</a>
+			</td>
+        </tr>
+    </table>
+    </div>
+	<footer th:replace="layout :: site-footer"></footer>    
+</body>
+</html>

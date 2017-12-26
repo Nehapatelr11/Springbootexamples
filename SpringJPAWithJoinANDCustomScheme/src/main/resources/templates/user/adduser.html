@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+ 	<title>Add new user</title>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+   
+    <div>
+    <br/>
+    <br/>
+    </div>
+    
+    <div class="page-header">
+        <h3>Add new user</h3>
+    </div>
+	<form th:object="${userDetail}" th:action="@{/user}" action="#" method="post">
+		<table class="table">
+		<tr>
+			<td width="150">
+			</td>
+			<td width="250">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<input type="hidden" th:field="*{userId}"  />
+				<label>First name:</label>
+			</td>
+			<td>
+				<input type="text" autofocus="autofocus" th:field="*{firstName}" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Last name:</label>
+			</td>
+			<td>
+				<input type="text" th:field="*{lastName}" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Phone number:</label>
+			</td>
+			<td>
+				<input type="text" th:field="*{phoneNumber}" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Organisation</label>
+			</td>
+			<td>
+				<select th:field="*{organisationId}">
+    				<option th:each="organisation : ${organisations}" th:value="${organisation.organisationId}" th:text="${organisation.name}">Wireframe</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<input type="submit" class="btn" value="Save" />
+				<a class="btn" href="/users">Cancel</a>			
+			</td>
+		</tr>
+		</table>
+	</form>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>

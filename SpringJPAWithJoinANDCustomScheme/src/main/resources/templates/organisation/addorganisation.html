@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: site-head">
+	<title>Add new organisation</title>
+</head>
+<body>
+<header th:replace="layout :: site-header"></header>
+<div class="container">
+   
+    <div>
+    <br/>
+    <br/>
+    </div>
+    
+    <div class="page-header">
+        <h3>Add new organisation</h3>
+    </div>
+   
+	<form th:object="${organisation}" th:action="@{/organisation}" action="#" method="post">
+		<table class="table">
+		<tr>
+			<td width="150">
+			</td>
+			<td width="250">
+			</td>
+		</tr>
+		<tr>
+			<td>
+			<input type="hidden" th:field="*{organisationId}"  />
+				<label>Name:</label>
+			</td>
+			<td>
+				<input type="text" autofocus="autofocus" th:field="*{name}" />
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label>Type:</label>
+			</td>
+			<td>
+				<input type="text" th:field="*{type}" />
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="submit" class="btn" value="Save" />			
+			</td>
+		</tr>
+		</table>
+	</form>
+</div>
+<footer th:replace="layout :: site-footer"></footer>
+</body>
+</html>
